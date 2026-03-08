@@ -19,10 +19,10 @@ import (
 	"unicode"
 
 	survey "github.com/AlecAivazis/survey/v2"
-	wizard "github.com/Bibi40k/cli-wizard-core"
-	sshutil "github.com/Bibi40k/talos-docker-bootstrap/internal/ssh"
-	vmtool "github.com/Bibi40k/talos-docker-bootstrap/internal/tooling/vmbootstrap"
-	vmconfig "github.com/Bibi40k/vmware-vm-bootstrap/pkg/config"
+	wizard "github.com/infrakit-io/cli-wizard-core"
+	sshutil "github.com/infrakit-io/talos-docker-bootstrap/internal/ssh"
+	vmtool "github.com/infrakit-io/talos-docker-bootstrap/internal/tooling/vmbootstrap"
+	vmconfig "github.com/infrakit-io/vmware-vm-bootstrap/pkg/config"
 	"github.com/spf13/cobra"
 	"gopkg.in/yaml.v3"
 )

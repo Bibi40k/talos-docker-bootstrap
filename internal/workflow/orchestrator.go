@@ -4,9 +4,9 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/bootstrap"
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/config"
-	vmconfig "github.com/Bibi40k/vmware-vm-bootstrap/pkg/config"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/bootstrap"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/config"
+	vmconfig "github.com/infrakit-io/vmware-vm-bootstrap/pkg/config"
 )
 
 // ProvisionAndBootstrapOptions controls orchestrated execution behavior.

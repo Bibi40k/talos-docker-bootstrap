@@ -12,10 +12,10 @@ import (
 	"strings"
 	"time"
 
-	wizard "github.com/Bibi40k/cli-wizard-core"
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/config"
-	vmtool "github.com/Bibi40k/talos-docker-bootstrap/internal/tooling/vmbootstrap"
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/workflow"
+	wizard "github.com/infrakit-io/cli-wizard-core"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/config"
+	vmtool "github.com/infrakit-io/talos-docker-bootstrap/internal/tooling/vmbootstrap"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/workflow"
 	"github.com/spf13/cobra"
 )
 

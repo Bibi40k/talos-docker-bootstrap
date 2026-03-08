@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/bootstrap"
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/config"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/bootstrap"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/config"
 )
 
 func TestLoadBootstrapResultYAML(t *testing.T) {

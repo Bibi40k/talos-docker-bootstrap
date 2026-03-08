@@ -6,8 +6,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/Bibi40k/talos-docker-bootstrap/internal/ssh"
-	vmconfig "github.com/Bibi40k/vmware-vm-bootstrap/pkg/config"
+	"github.com/infrakit-io/talos-docker-bootstrap/internal/ssh"
+	vmconfig "github.com/infrakit-io/vmware-vm-bootstrap/pkg/config"
 )
 
 var scanHostKeyFingerprintFn = ssh.ScanHostKeyFingerprint

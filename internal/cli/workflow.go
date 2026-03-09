@@ -130,7 +130,8 @@ func newProvisionAndBootstrapCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVar(&configPath, "config", "", "Path to Talos bootstrap YAML config file")
+	defCfg := defaultConfigPath()
+	cmd.Flags().StringVar(&configPath, "config", defCfg, "Path to Talos bootstrap YAML config file")
 	cmd.Flags().StringVar(&bootstrapPath, "bootstrap-result", "", "Path to bootstrap result JSON/YAML")
 	cmd.Flags().StringVar(&vmConfigPath, "vm-config", "", "Path to vmware-vm-bootstrap VM config (SOPS/cleartext)")
 	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "Validate and print planned operations without changes")
@@ -139,7 +140,9 @@ func newProvisionAndBootstrapCmd() *cobra.Command {
 	cmd.Flags().StringVar(&vmbootstrapRepo, "vmbootstrap-repo", "../vmware-vm-bootstrap", "Path to vmware-vm-bootstrap repository (used only with --vmbootstrap-auto-build)")
 	cmd.Flags().BoolVar(&vmbootstrapBuild, "vmbootstrap-auto-build", false, "Auto-build vmbootstrap from --vmbootstrap-repo when binary is missing")
 	cmd.Flags().BoolVar(&vmbootstrapNotify, "vmbootstrap-update-notify", true, "Show update notice when a newer vmbootstrap module version is available")
-	_ = cmd.MarkFlagRequired("config")
+	if defCfg == "" {
+		_ = cmd.MarkFlagRequired("config")
+	}
 	// bootstrap-result or vm-config is required; validated at runtime.
 
 	return cmd

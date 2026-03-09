@@ -72,10 +72,13 @@ func newBootstrapCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVar(&configPath, "config", "", "Path to YAML config file")
+	defCfg := defaultConfigPath()
+	cmd.Flags().StringVar(&configPath, "config", defCfg, "Path to YAML config file")
 	cmd.Flags().BoolVar(&dryRun, "dry-run", false, "Validate and print planned operations without changes")
 	cmd.Flags().BoolVar(&jsonOut, "json", false, "Print machine-readable result JSON")
-	_ = cmd.MarkFlagRequired("config")
+	if defCfg == "" {
+		_ = cmd.MarkFlagRequired("config")
+	}
 
 	return cmd
 }

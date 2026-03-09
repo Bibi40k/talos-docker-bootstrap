@@ -43,8 +43,11 @@ func newClusterStatusCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVar(&configPath, "config", "", "Path to YAML config file")
-	_ = cmd.MarkFlagRequired("config")
+	defCfg := defaultConfigPath()
+	cmd.Flags().StringVar(&configPath, "config", defCfg, "Path to YAML config file")
+	if defCfg == "" {
+		_ = cmd.MarkFlagRequired("config")
+	}
 	return cmd
 }
 
@@ -93,9 +96,12 @@ func newKubeconfigExportCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVar(&configPath, "config", "", "Path to YAML config file")
+	defCfg := defaultConfigPath()
+	cmd.Flags().StringVar(&configPath, "config", defCfg, "Path to YAML config file")
 	cmd.Flags().StringVar(&outPath, "out", "", "Local output path for kubeconfig")
-	_ = cmd.MarkFlagRequired("config")
+	if defCfg == "" {
+		_ = cmd.MarkFlagRequired("config")
+	}
 	_ = cmd.MarkFlagRequired("out")
 	return cmd
 }
@@ -129,8 +135,11 @@ func newMountCheckCmd() *cobra.Command {
 		},
 	}
 
-	cmd.Flags().StringVar(&configPath, "config", "", "Path to YAML config file")
-	_ = cmd.MarkFlagRequired("config")
+	defCfg := defaultConfigPath()
+	cmd.Flags().StringVar(&configPath, "config", defCfg, "Path to YAML config file")
+	if defCfg == "" {
+		_ = cmd.MarkFlagRequired("config")
+	}
 	return cmd
 }
 

@@ -1,6 +1,6 @@
 module github.com/infrakit-io/talos-docker-bootstrap
 
-go 1.26.0
+go 1.26.1
 
 require (
 	github.com/AlecAivazis/survey/v2 v2.3.7

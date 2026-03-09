@@ -1,4 +1,4 @@
-.PHONY: help build build-cli test test-v test-cover test-cover-all lint fmt vet vulncheck clean deps verify install install-requirements install-vmbootstrap update-vmbootstrap-pin config run run-dry vm-deploy talos-bootstrap talos-bootstrap-dry run-workflow cluster-status mount-check kubeconfig-export check-go
+.PHONY: help build build-cli test test-v test-cover test-cover-all lint fmt vet vulncheck clean deps verify install install-requirements setup install-vmbootstrap update-vmbootstrap-pin config run run-dry vm-deploy talos-bootstrap talos-bootstrap-dry run-workflow cluster-status mount-check kubeconfig-export check-go
 
 # Auto-download Go toolchain if local version < go.mod requirement
 export GOTOOLCHAIN=auto
@@ -61,6 +61,7 @@ help:
 	@printf "\n$(BOLD)  Setup$(RESET)\n"
 	@printf "    $(GREEN)make install-requirements$(RESET)  	Install all required external tools\n"
 	@printf "    $(GREEN)make install-vmbootstrap$(RESET)   	Install pinned vmbootstrap CLI from go.mod\n"
+	@printf "    $(GREEN)make setup$(RESET)               	Install pre-commit hook\n"
 	@printf "\n$(BOLD)  Testing$(RESET)\n"
 	@printf "    $(GREEN)make test$(RESET)          		Run all tests\n"
 	@printf "    $(GREEN)make test-v$(RESET)        		Run tests with verbose output\n"
@@ -205,6 +206,20 @@ verify: check-go
 
 install-requirements:
 	@bash scripts/install-requirements.sh
+
+REPO_STANDARDS_KIT ?= ../repo-standards-kit
+
+setup:
+	@mkdir -p .git/hooks
+	@if [ -f "$(REPO_STANDARDS_KIT)/templates/common/hooks/pre-commit" ]; then \
+		cp "$(REPO_STANDARDS_KIT)/templates/common/hooks/pre-commit" .git/hooks/pre-commit; \
+		chmod +x .git/hooks/pre-commit; \
+		printf "$(GREEN)✓ pre-commit hook installed$(RESET)\n"; \
+	else \
+		printf "$(YELLOW)Hook not found at $(REPO_STANDARDS_KIT)/templates/common/hooks/pre-commit$(RESET)\n"; \
+		printf "$(YELLOW)Set REPO_STANDARDS_KIT=<path> to override.$(RESET)\n"; \
+		exit 1; \
+	fi
 
 install-vmbootstrap: check-go
 	@printf "$(CYAN)Installing vmbootstrap (pinned from go.mod)...$(RESET)\n"

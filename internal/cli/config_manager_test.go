@@ -99,14 +99,14 @@ func TestFetchTalosChecksumFromRelease(t *testing.T) {
 }
 
 func TestNormalizeClusterName(t *testing.T) {
-	if got := normalizeClusterName("Dan Serban_WORK"); got != "dan-serban-work" {
+	if got := normalizeClusterName("John Doe_WORK"); got != "john-doe-work" {
 		t.Fatalf("unexpected normalized name: %q", got)
 	}
 }
 
 func TestAdjustStateDirForClusterName(t *testing.T) {
-	got := adjustStateDirForClusterName("/home/dev/.talos/clusters/devvm", "devvm", "danserban-work")
-	if got != "/home/dev/.talos/clusters/danserban-work" {
+	got := adjustStateDirForClusterName("/home/dev/.talos/clusters/devvm", "devvm", "johndoe-work")
+	if got != "/home/dev/.talos/clusters/johndoe-work" {
 		t.Fatalf("unexpected adjusted state dir: %q", got)
 	}
 }
@@ -166,9 +166,9 @@ func TestSanitizeSuggestion(t *testing.T) {
 
 func TestApplyClusterNameFallback(t *testing.T) {
 	cfg := stage2File{}
-	cfg.VM.Host = "Dan-Serban_Work"
+	cfg.VM.Host = "John-Doe_Work"
 	applyClusterNameFallback(&cfg)
-	if cfg.Cluster.Name != "dan-serban-work" {
+	if cfg.Cluster.Name != "john-doe-work" {
 		t.Fatalf("unexpected fallback cluster name: %q", cfg.Cluster.Name)
 	}
 }
@@ -186,15 +186,15 @@ func TestApplyClusterNameSuggestionFromBootstrap(t *testing.T) {
 	if err := os.MkdirAll("configs", 0o755); err != nil {
 		t.Fatalf("mkdir configs: %v", err)
 	}
-	vmCfg := []byte("vm:\n  name: DanSerban-Work\n  ip_address: 1.2.3.4\n  username: dev\n")
-	if err := os.WriteFile("configs/vm.danserban.sops.yaml", vmCfg, 0o600); err != nil {
+	vmCfg := []byte("vm:\n  name: JohnDoe-Work\n  ip_address: 1.2.3.4\n  username: dev\n")
+	if err := os.WriteFile("configs/vm.johndoe.sops.yaml", vmCfg, 0o600); err != nil {
 		t.Fatalf("write vm config: %v", err)
 	}
 
 	cfg := stage2File{}
 	cfg.Cluster.Name = "devvm"
 	applyClusterNameSuggestionFromBootstrap(&cfg)
-	if cfg.Cluster.Name != "danserban-work" {
+	if cfg.Cluster.Name != "johndoe-work" {
 		t.Fatalf("unexpected suggested name: %q", cfg.Cluster.Name)
 	}
 }

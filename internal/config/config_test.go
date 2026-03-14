@@ -101,21 +101,21 @@ timeouts:
 	}
 
 	t.Setenv("TDB_VM_HOST", "192.168.0.10")
-	t.Setenv("TDB_VM_USER", "bibi40k")
-	t.Setenv("TDB_VM_SSH_PRIVATE_KEY", "/home/bibi40k/.ssh/DA")
-	t.Setenv("TDB_CLUSTER_STATE_DIR", "/home/bibi40k/.talos/clusters/devvm")
+	t.Setenv("TDB_VM_USER", "dev-user")
+	t.Setenv("TDB_VM_SSH_PRIVATE_KEY", "/home/dev-user/.ssh/id_ed25519")
+	t.Setenv("TDB_CLUSTER_STATE_DIR", "/home/dev-user/.talos/clusters/devvm")
 
 	cfg, err := Load(path)
 	if err != nil {
 		t.Fatalf("Load failed: %v", err)
 	}
-	if cfg.VM.Host != "192.168.0.10" || cfg.VM.User != "bibi40k" {
+	if cfg.VM.Host != "192.168.0.10" || cfg.VM.User != "dev-user" {
 		t.Fatalf("env overrides not applied: %#v", cfg.VM)
 	}
-	if cfg.VM.SSHPrivateKey != "/home/bibi40k/.ssh/DA" {
+	if cfg.VM.SSHPrivateKey != "/home/dev-user/.ssh/id_ed25519" {
 		t.Fatalf("ssh key override missing: %q", cfg.VM.SSHPrivateKey)
 	}
-	if cfg.Cluster.StateDir != "/home/bibi40k/.talos/clusters/devvm" {
+	if cfg.Cluster.StateDir != "/home/dev-user/.talos/clusters/devvm" {
 		t.Fatalf("state dir override missing: %q", cfg.Cluster.StateDir)
 	}
 }

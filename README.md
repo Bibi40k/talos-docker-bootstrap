@@ -1,11 +1,11 @@
 # talos-docker-bootstrap
 
-![CI](https://github.com/Bibi40k/talos-docker-bootstrap/actions/workflows/ci.yml/badge.svg)
-![Coverage Core](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Bibi40k/talos-docker-bootstrap/master/docs/coverage/coverage-core.json)
-![Coverage All](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/Bibi40k/talos-docker-bootstrap/master/docs/coverage/coverage-all.json)
-[![Go Report Card](https://goreportcard.com/badge/github.com/bibi40k/talos-docker-bootstrap)](https://goreportcard.com/report/github.com/bibi40k/talos-docker-bootstrap)
-![Go Version](https://img.shields.io/github/go-mod/go-version/Bibi40k/talos-docker-bootstrap)
-![Release](https://img.shields.io/github/v/release/Bibi40k/talos-docker-bootstrap)
+![CI](https://github.com/infrakit-io/talos-docker-bootstrap/actions/workflows/ci.yml/badge.svg)
+![Coverage Core](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/infrakit-io/talos-docker-bootstrap/master/docs/coverage/coverage-core.json)
+![Coverage All](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/infrakit-io/talos-docker-bootstrap/master/docs/coverage/coverage-all.json)
+[![Go Report Card](https://goreportcard.com/badge/github.com/infrakit-io/talos-docker-bootstrap)](https://goreportcard.com/report/github.com/infrakit-io/talos-docker-bootstrap)
+![Go Version](https://img.shields.io/github/go-mod/go-version/infrakit-io/talos-docker-bootstrap)
+![Release](https://img.shields.io/github/v/release/infrakit-io/talos-docker-bootstrap)
 
 Enterprise-grade post-bootstrap for Ubuntu dev VMs.
 

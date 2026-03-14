@@ -20,12 +20,12 @@ Notes:
 
 Highlights:
 - Project renamed from `talos-vm-bootstrap` to `talos-docker-bootstrap` for semantic clarity.
-- Go module path and internal imports updated to `github.com/Bibi40k/talos-docker-bootstrap`.
+- Go module path and internal imports updated to `github.com/infrakit-io/talos-docker-bootstrap`.
 - CLI binary/command name updated to `talos-docker-bootstrap`.
 
 Notes:
 - This is a breaking rename for import paths and command invocations.
-- GitHub repository has been renamed to `Bibi40k/talos-docker-bootstrap`.
+- GitHub repository has been renamed to `infrakit-io/talos-docker-bootstrap`.
 
 ## v0.1.3 (2026-03-01)
 

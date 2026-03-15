@@ -18,7 +18,6 @@ import (
 	"time"
 	"unicode"
 
-	survey "github.com/AlecAivazis/survey/v2"
 	wizard "github.com/infrakit-io/cli-wizard-core"
 	sshutil "github.com/infrakit-io/talos-docker-bootstrap/internal/ssh"
 	vmtool "github.com/infrakit-io/talos-docker-bootstrap/internal/tooling/vmbootstrap"
@@ -183,16 +182,11 @@ func runConfigManager(opts configManagerOptions) error {
 
 		options = append(options, "Exit")
 
-		var choice string
-		prompt := &survey.Select{
-			Message: "Select:",
-			Options: options,
+		sel := wizard.NewSelector()
+		choice := sel.Select(options, "Exit", "Select:")
+		if sel.WasInterrupted() {
+			return nil
 		}
-		if err := survey.AskOne(prompt, &choice); err != nil {
-			return nil // Ctrl+C / EOF
-		}
-		// Clear delayed terminal control responses left by survey rendering.
-		drainStdin()
 		if choice == "Exit" {
 			fmt.Println()
 			return nil
@@ -872,7 +866,7 @@ func startStage2DraftInterruptHandler(targetPath, draftPath string, dataFn func(
 			}
 		}
 		fmt.Println("Cancelled.")
-		restoreTTYOnExit()
+		wizard.RestoreTTY()
 		os.Exit(0)
 	}()
 	return func() {

@@ -15,6 +15,7 @@ vars:
 includes:
   _common:
     taskfile: ../repo-standards-kit/Taskfile.common.yml
+    optional: true
     flatten: true
     dir: '.'
     # Override _check-go (custom preflight), test-cover (specific pkgs), clean (extra files)
